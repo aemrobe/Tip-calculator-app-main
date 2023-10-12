@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href="main.css" />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <!--logo-->
+    <img src="./images/logo.svg" class="logo" alt="logo" />
+
+    <!--main-->
+    <main class="main">
+      <!--input for the tip-->
+      <div action="#" class="input-for-the-tips">
+        <!--bill-->
+        <div class="bill">
+          <label class="label" for="bill">Bill</label>
+
+          <div class="input-container">
+            <!--dollar icon-->
+            <img src="./images/icon-dollar.svg" alt="" />
+
+            <!--input-->
+            <input type="number" name="bill" id="bill" />
+          </div>
+
+          <!--show error message-->
+          <p class="error hidden margin-top-1">error</p>
+        </div>
+
+        <!--select tip-->
+        <div class="tip-container">
+          <p class="label label--select">Select Tip %</p>
+
+          <div class="button-list">
+            <button class="tip-button" type="button" value="5%">5%</button>
+            <button class="tip-button" type="button" value="10%">10%</button>
+            <button class="tip-button" type="button" value="15%">15%</button>
+            <button class="tip-button" type="button" value="25%">25%</button>
+            <button class="tip-button" type="button" value="50%">50%</button>
+
+            <input
+              type="number"
+              placeholder="Custom"
+              name="custom-tip"
+              class="custom-tip"
+            />
+          </div>
+
+          <!--show error message-->
+          <p class="error margin-top-1 hidden">error</p>
+        </div>
+
+        <!--number of people-->
+        <div class="number-of-people" style="position: relative">
+          <label class="label" for="no-of-people"> Number of People</label>
+
+          <div class="input-container">
+            <!--person icon-->
+            <img src="./images/icon-person.svg" alt="" />
+
+            <input type="number" id="no-of-people" name="number of people" />
+          </div>
+
+          <!--show error message-->
+          <p class="error margin-top-1 hidden">error</p>
+        </div>
+      </div>
+
+      <!--output for the tip-->
+      <div class="output">
+        <div class="output__tip">
+          <p class="output__label">
+            Tip Amount <br />
+            <span class="output__label--small">/ person</span>
+          </p>
+
+          <p class="output__value output__value--tip">$0.00</p>
+        </div>
+
+        <div class="output__tip output__tip--total margin-top-2">
+          <p class="output__label">
+            Total <br />
+            <span class="output__label--small">/ person</span>
+          </p>
+
+          <p class="output__value output__value--total">$0.00</p>
+        </div>
+
+        <!--reset button-->
+        <button class="reset-btn" type="button">Reset</button>
+      </div>
+    </main>
+
+    <!--footer-->
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://www.frontendmentor.io/profile/aemrobe">Aemro Bekalu</a
+        >.
+      </div>
+    </footer>
+
+    <!--javascript file-->
+    <script src="script.js"></script>
+  </body>
+</html>
