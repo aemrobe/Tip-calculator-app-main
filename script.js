@@ -58,6 +58,9 @@ class tip {
 
     //reset button
     resetButton.addEventListener("click", this.reset.bind(this));
+
+    //window reload
+    window.onload = this.clearInputs();
   }
 
   //## validators ##
@@ -228,6 +231,7 @@ class tip {
   reset() {
     location.reload();
     this.clearInputs();
+    this.hideErrorMessage();
   }
 
   //running a set of validator on a fields
