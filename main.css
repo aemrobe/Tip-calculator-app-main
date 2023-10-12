@@ -231,8 +231,11 @@ footer {
 }
 
 @media (min-width: 1440px) {
-  .logo {
+  header {
     margin-top: auto;
+  }
+
+  .logo {
     margin-bottom: 8.6rem;
   }
 
