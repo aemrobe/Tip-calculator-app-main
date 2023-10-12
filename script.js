@@ -16,6 +16,7 @@ const outputTotalPerPerson = document.querySelector(".output__value--total");
 //object oriented programming
 class tip {
   tipPercentage;
+
   fields = [
     {
       element: inputBill,
@@ -28,11 +29,7 @@ class tip {
     { element: noOfPeople, validator: [this.validateZero] },
   ];
 
-  constructor(bill, numberOfPeople, percentage) {
-    this.bill = bill;
-    this.numOfPeople = numberOfPeople;
-    this.percentage = percentage;
-
+  constructor() {
     //event listeners
     inputBill.addEventListener("keyup", this.eventHanlderInputBill.bind(this));
     inputBill.addEventListener("change", this.eventHanlderInputBill.bind(this));
@@ -126,6 +123,10 @@ class tip {
 
     //setting the textContent of the showError element
     showErrorElement.textContent = `${error}`;
+
+    //setting the text content of the output elements to null
+    outputTipPerPerson.textContent = `${this.formatCurrency(0)}`;
+    outputTotalPerPerson.textContent = `${this.formatCurrency(0)}`;
   }
 
   //hide error message
@@ -188,10 +189,11 @@ class tip {
 
     if (totalError.length === 0) {
       //bill,numberofpeople
-      const bill = +this.numOfPeople;
-      const tip = this.tipPercentage * this.bill;
-      const numberOfPeople = +this.numOfPeople;
+      const bill = +inputBill.value;
+      const tip = this.tipPercentage * bill;
+      const numberOfPeople = +noOfPeople.value;
 
+      console.log(bill, tip, numberOfPeople);
       //total Amount
       const totalAmount = bill + tip;
 
@@ -231,7 +233,7 @@ class tip {
   //running a set of validator on a fields
   validateField(validators, value) {
     for (const validator of validators) {
-      const error = validator(value);
+      const error = validator.call(this, value);
 
       if (error) return error;
     }
@@ -270,4 +272,4 @@ class tip {
 }
 
 //creating an object
-const Tip = new tip(inputBill.value, noOfPeople.value, customInput.value);
+const Tip = new tip();
