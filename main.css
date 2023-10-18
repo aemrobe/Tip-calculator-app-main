@@ -43,13 +43,15 @@ body {
   align-items: center;
 }
 
-button {
+button,
+input {
   border: none;
   font-family: inherit;
 }
 
 button,
-input {
+input,
+.tip-button {
   border: none;
   outline: none;
   font-family: inherit;
@@ -58,7 +60,7 @@ input {
   color: var(--very-dark-cyan);
 }
 
-input {
+input[type="number"] {
   color: var(--very-dark-cyan);
   text-align: right;
   width: calc(100% - 1.1rem);
@@ -66,7 +68,7 @@ input {
 }
 
 .input-container:hover,
-.button-list input:hover {
+.button-list input.custom-tip:hover {
   outline: 2px solid var(--strong-cyan);
 }
 
@@ -116,33 +118,43 @@ label[for="bill"] {
 .input-container:focus-within {
   outline: 2px solid var(--strong-cyan);
 }
+*/
 
 /*button list*/
 .button-list {
-  border-radius: 8px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5rem;
 }
 
-button {
+button,
+.tip-button {
   background-color: var(--very-dark-cyan);
   color: var(--white);
 }
 
-.button-list button:hover {
+.tip-button {
+  text-align: center;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.tip-button:hover {
   --strong-cyan: hsl(172, 67%, 75%);
   background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
 }
 
 button,
-.button-list input {
+.tip-button,
+.button-list input.custom-tip {
   padding: 1rem 0;
   width: 100%;
 }
 
-.button-list input {
+.button-list input.custom-input {
   background-color: var(--very-light-grayish-cyan);
   padding-right: 1.2rem;
   width: 100%;
@@ -153,7 +165,7 @@ button,
   color: var(--very-dark-cyan);
 }
 
-.button-list input::placeholder {
+.button-list input.custom-tip::placeholder {
   text-align: center;
   color: var(--very-dark-cyan);
   opacity: 0.7;
@@ -162,6 +174,7 @@ button,
 .button-list input:focus {
   outline: 2px solid var(--strong-cyan);
 }
+*/
 
 /*number of people*/
 .wrapper {
