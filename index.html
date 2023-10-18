@@ -26,7 +26,7 @@
     <!--main-->
     <main class="main">
       <!--input for the tip-->
-      <div action="#" class="input-for-the-tips">
+      <form action="#" class="input-for-the-tips">
         <!--bill-->
         <div class="bill">
           <label class="label" for="bill">Bill</label>
@@ -40,7 +40,7 @@
           </div>
 
           <!--show error message-->
-          <p class="error hidden margin-top-1">error</p>
+          <p aria-live="off" class="error hidden margin-top-1">error</p>
         </div>
 
         <!--select tip-->
@@ -48,11 +48,45 @@
           <p class="label label--select">Select Tip %</p>
 
           <div class="button-list">
-            <button class="tip-button" type="button" value="5%">5%</button>
-            <button class="tip-button" type="button" value="10%">10%</button>
-            <button class="tip-button" type="button" value="15%">15%</button>
-            <button class="tip-button" type="button" value="25%">25%</button>
-            <button class="tip-button" type="button" value="50%">50%</button>
+            <input
+              id="percent-5"
+              name="tip-percentage"
+              type="radio"
+              value="5%"
+            />
+            <label class="tip-button" for="percent-5">5%</label>
+
+            <input
+              id="percent-10"
+              type="radio"
+              name="tip-percentage"
+              value="10%"
+            />
+            <label class="tip-button" for="percent-10">10%</label>
+
+            <input
+              id="percent-15"
+              type="radio"
+              name="tip-percentage"
+              value="15%"
+            />
+            <label class="tip-button" for="percent-15">15%</label>
+
+            <input
+              id="percent-25"
+              type="radio"
+              name="tip-percentage"
+              value="25%"
+            />
+            <label class="tip-button" for="percent-25">25%</label>
+
+            <input
+              id="percent-50"
+              type="radio"
+              name="tip-percentage"
+              value="50%"
+            />
+            <label class="tip-button" for="percent-50">50%</label>
 
             <input
               type="number"
@@ -63,7 +97,7 @@
           </div>
 
           <!--show error message-->
-          <p class="error margin-top-1 hidden">error</p>
+          <p aria-live="off" class="error margin-top-1 hidden">error</p>
         </div>
 
         <!--number of people-->
@@ -78,9 +112,9 @@
           </div>
 
           <!--show error message-->
-          <p class="error margin-top-1 hidden">error</p>
+          <p aria-live="off" class="error margin-top-1 hidden">error</p>
         </div>
-      </div>
+      </form>
 
       <!--output for the tip-->
       <div class="output">

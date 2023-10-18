@@ -1,6 +1,6 @@
 // //###### Elements ######
 //input Elements
-const inputs = document.querySelectorAll("input");
+const inputs = document.querySelectorAll('input[type="number"]');
 const inputforthetips = document.querySelector(".input-for-the-tips");
 const inputBill = document.querySelector("#bill");
 const tipButtons = document.querySelectorAll(".tip-button");
@@ -30,12 +30,13 @@ class tip {
   ];
 
   constructor() {
+    this.playing = false;
     //event listeners
     inputBill.addEventListener("keyup", this.eventHanlderInputBill.bind(this));
     inputBill.addEventListener("change", this.eventHanlderInputBill.bind(this));
 
     //managing buttons
-    buttonList.addEventListener("click", this.managingButtons.bind(this));
+    buttonList.addEventListener("change", this.managingButtons.bind(this));
 
     //managing custom input
     customInput.addEventListener("focus", this.managingCustomInputs.bind(this));
@@ -53,6 +54,11 @@ class tip {
     //number of people
     noOfPeople.addEventListener(
       "keyup",
+      this.eventHandlerNoOfPeople.bind(this)
+    );
+
+    noOfPeople.addEventListener(
+      "change",
       this.eventHandlerNoOfPeople.bind(this)
     );
 
@@ -77,7 +83,7 @@ class tip {
         Number.parseInt(
           Array.from(tipButtons).find((button) =>
             button.classList.contains("tip-button--active")
-          )?.value
+          )?.textContent
         ) / 100;
 
       if (this.tipPercentage) {
@@ -124,6 +130,9 @@ class tip {
     //showing the error
     showErrorElement.classList.remove("hidden");
 
+    //setting the aria-live attribute
+    showErrorElement.setAttribute("aria-live", "polite");
+
     //setting the textContent of the showError element
     showErrorElement.textContent = `${error}`;
 
@@ -143,6 +152,9 @@ class tip {
     //the element which show the error
     const showErrorElement = field.parentElement.nextElementSibling;
 
+    //setting the aria-live attribute
+    showErrorElement.setAttribute("aria-live", "off");
+
     showErrorElement.classList.add("hidden");
   }
 
@@ -155,6 +167,11 @@ class tip {
     } else {
       this.hideErrorMessage(inputBill);
     }
+
+    //calculate the Tip
+    if (this.playing === true) {
+      this.calculateTheTip();
+    }
   }
 
   eventHandlerCustomInput() {
@@ -165,10 +182,14 @@ class tip {
     } else {
       this.hideErrorMessage(customInput);
     }
+
+    //calculate the Tip
+    if (this.playing === true) {
+      this.calculateTheTip();
+    }
   }
 
   eventHandlerNoOfPeople() {
-    let totalError = [];
     //validation for the noofpeople field
     const error = this.validateZero(noOfPeople.value);
 
@@ -178,7 +199,24 @@ class tip {
       this.hideErrorMessage(noOfPeople);
     }
 
-    //checking if there is an inputs which are forgotten to be filled
+    this.calculateTheTip();
+
+    this.playing = true;
+  }
+
+  //format Currency
+  formatCurrency(value) {
+    const number = new Intl.NumberFormat(navigator.language, {
+      style: "currency",
+      currency: "USD",
+    }).format(value);
+
+    return number;
+  }
+
+  calculateTheTip() {
+    let totalError = [];
+
     for (const field of this.fields) {
       const error = this.validateField(field.validator, field.element.value);
 
@@ -196,7 +234,6 @@ class tip {
       const tip = this.tipPercentage * bill;
       const numberOfPeople = +noOfPeople.value;
 
-      console.log(bill, tip, numberOfPeople);
       //total Amount
       const totalAmount = bill + tip;
 
@@ -208,16 +245,6 @@ class tip {
       outputTipPerPerson.textContent = `${tipPerPerson}`;
       outputTotalPerPerson.textContent = `${totalPerPerson}`;
     }
-  }
-
-  //format Currency
-  formatCurrency(value) {
-    const number = new Intl.NumberFormat(navigator.language, {
-      style: "currency",
-      currency: "USD",
-    }).format(value);
-
-    return number;
   }
 
   //make the inputs empty
@@ -245,22 +272,26 @@ class tip {
   }
 
   managingButtons(e) {
-    const clickedElement = e.target.closest(".tip-button");
+    const clickedElement = e.target;
 
-    if (!clickedElement) return;
+    if (!(clickedElement.type === "radio")) return;
 
-    //removing the active class from the buttons//
+    const targetedLabelElement = document.querySelector(
+      `label[for="${clickedElement.id}"]`
+    );
+
+    // //removing the active class from the buttons//
     tipButtons.forEach((button) =>
       button.classList.remove("tip-button--active")
     );
 
-    //adding the active class to the clicked button
-    clickedElement.classList.add("tip-button--active");
+    // //adding the active class to the clicked button
+    targetedLabelElement.classList.add("tip-button--active");
 
-    //hideErrorMessage after the button is clicked
+    // //hideErrorMessage after the button is clicked
     this.hideErrorMessage(customInput);
 
-    //making the customInput a readonly because we select the buttons
+    // //making the customInput a readonly because we select the buttons
     customInput.readOnly = true;
   }
 

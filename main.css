@@ -49,7 +49,8 @@ button {
 }
 
 button,
-input {
+input,
+.tip-button {
   border: none;
   outline: none;
   font-family: inherit;
@@ -58,7 +59,7 @@ input {
   color: var(--very-dark-cyan);
 }
 
-input {
+input[type="number"] {
   color: var(--very-dark-cyan);
   text-align: right;
   width: calc(100% - 1.1rem);
@@ -66,7 +67,7 @@ input {
 }
 
 .input-container:hover,
-.button-list input:hover {
+.button-list input.custom-tip:hover {
   outline: 2px solid var(--strong-cyan);
 }
 
@@ -125,24 +126,40 @@ label[for="bill"] {
   grid-gap: 1.5rem;
 }
 
-button {
+button,
+.tip-button {
   background-color: var(--very-dark-cyan);
   color: var(--white);
+  text-align: center;
 }
 
-.button-list button:hover {
+input[type="radio"] {
+  display: none;
+}
+
+/* #percent-5:checked + label,
+#percent-10:checked + label,
+#percent-15:checked + label,
+#percent-25:checked + label,
+#percent-50:checked + label {
+  background-color: var(--strong-cyan);
+  color: var(--very-dark-cyan);
+} */
+
+.button-list .tip-button:hover {
   --strong-cyan: hsl(172, 67%, 75%);
   background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
 }
 
 button,
-.button-list input {
+.tip-button,
+.button-list input.custom-tip {
   padding: 1rem 0;
   width: 100%;
 }
 
-.button-list input {
+.button-list input.custom-tip {
   background-color: var(--very-light-grayish-cyan);
   padding-right: 1.2rem;
   width: 100%;
@@ -153,13 +170,13 @@ button,
   color: var(--very-dark-cyan);
 }
 
-.button-list input::placeholder {
+.button-list input.custom-tip::placeholder {
   text-align: center;
   color: var(--very-dark-cyan);
   opacity: 0.7;
 }
 
-.button-list input:focus {
+.button-list input.custom-tip:focus {
   outline: 2px solid var(--strong-cyan);
 }
 
