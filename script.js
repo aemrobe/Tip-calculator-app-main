@@ -1,6 +1,6 @@
 // //###### Elements ######
 //input Elements
-const inputs = document.querySelectorAll('input[type="number"]');
+const inputs = document.querySelectorAll("input");
 const inputforthetips = document.querySelector(".input-for-the-tips");
 const inputBill = document.querySelector("#bill");
 const tipButtons = document.querySelectorAll(".tip-button");
@@ -124,8 +124,6 @@ class tip {
     //showing the error
     showErrorElement.classList.remove("hidden");
 
-    showErrorElement.setAttribute("aria-live", "polite");
-
     //setting the textContent of the showError element
     showErrorElement.textContent = `${error}`;
 
@@ -144,8 +142,6 @@ class tip {
 
     //the element which show the error
     const showErrorElement = field.parentElement.nextElementSibling;
-
-    showErrorElement.setAttribute("aria-live", "off");
 
     showErrorElement.classList.add("hidden");
   }
