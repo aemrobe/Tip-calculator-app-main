@@ -10,6 +10,8 @@ const customInput = document.querySelector(".custom-tip");
 const resetButton = document.querySelector(".reset-btn ");
 
 //output element
+const outputValue = document.querySelectorAll(".output__value");
+
 const outputTipPerPerson = document.querySelector(".output__value--tip");
 const outputTotalPerPerson = document.querySelector(".output__value--total");
 
@@ -133,6 +135,10 @@ class tip {
     //setting the aria-live attribute
     showErrorElement.setAttribute("aria-live", "polite");
 
+    outputValue.forEach((output) => {
+      output.setAttribute("aria-live", "polite");
+    });
+
     //setting the textContent of the showError element
     showErrorElement.textContent = `${error}`;
 
@@ -154,6 +160,10 @@ class tip {
 
     //setting the aria-live attribute
     showErrorElement.setAttribute("aria-live", "off");
+
+    outputValue.forEach((output) => {
+      output.setAttribute("aria-live", "off");
+    });
 
     showErrorElement.classList.add("hidden");
   }
@@ -288,17 +298,20 @@ class tip {
     // //adding the active class to the clicked button
     targetedLabelElement.classList.add("tip-button--active");
 
-    // //hideErrorMessage after the button is clicked
-    this.hideErrorMessage(customInput);
-
+    //calculate the Tip
     // //making the customInput a readonly because we select the buttons
     customInput.readOnly = true;
+
+    if (this.playing === true) {
+      this.calculateTheTip();
+    }
   }
 
   //removing the active class from the buttons when the custom input is focussed
   managingCustomInputs() {
     //making the customInput not a read-only
     customInput.readOnly = false;
+
     /*removing the active class from the buttons*/
     tipButtons.forEach((button) =>
       button.classList.remove("tip-button--active")

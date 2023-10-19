@@ -40,14 +40,16 @@
           </div>
 
           <!--show error message-->
-          <p aria-live="off" class="error hidden margin-top-1">error</p>
+          <p class="error hidden margin-top-1">error</p>
         </div>
 
         <!--select tip-->
         <div class="tip-container">
-          <p class="label label--select">Select Tip %</p>
+          <label class="label label--select" for="label--select"
+            >Select Tip %</label
+          >
 
-          <div class="button-list">
+          <fieldset class="button-list">
             <input
               id="percent-5"
               name="tip-percentage"
@@ -93,11 +95,12 @@
               placeholder="Custom"
               name="custom-tip"
               class="custom-tip"
+              id="label--select"
             />
-          </div>
+          </fieldset>
 
           <!--show error message-->
-          <p aria-live="off" class="error margin-top-1 hidden">error</p>
+          <p class="error margin-top-1 hidden">error</p>
         </div>
 
         <!--number of people-->
@@ -112,7 +115,7 @@
           </div>
 
           <!--show error message-->
-          <p aria-live="off" class="error margin-top-1 hidden">error</p>
+          <p class="error margin-top-1 hidden">error</p>
         </div>
       </form>
 

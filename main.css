@@ -121,6 +121,7 @@ label[for="bill"] {
 /*button list*/
 .button-list {
   border-radius: 8px;
+  border: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1.5rem;
@@ -136,15 +137,6 @@ button,
 input[type="radio"] {
   display: none;
 }
-
-/* #percent-5:checked + label,
-#percent-10:checked + label,
-#percent-15:checked + label,
-#percent-25:checked + label,
-#percent-50:checked + label {
-  background-color: var(--strong-cyan);
-  color: var(--very-dark-cyan);
-} */
 
 .button-list .tip-button:hover {
   --strong-cyan: hsl(172, 67%, 75%);
