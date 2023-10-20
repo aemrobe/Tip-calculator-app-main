@@ -101,10 +101,6 @@ label[for="bill"] {
   margin-bottom: 1.2rem;
 }
 
-.label--select {
-  margin: 3.9rem 0 1.5rem;
-}
-
 .input-container {
   padding: 1rem 1.9rem;
   border-radius: 8px;
@@ -134,10 +130,6 @@ button,
   text-align: center;
 }
 
-input[type="radio"] {
-  display: none;
-}
-
 .button-list .tip-button:hover {
   --strong-cyan: hsl(172, 67%, 75%);
   background-color: var(--strong-cyan);
@@ -157,6 +149,29 @@ button,
   width: 100%;
 }
 
+.tip-container {
+  margin-top: 3.9rem;
+}
+
+.button-list {
+  padding-top: 2rem;
+}
+
+/*sr-only*/
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
 .tip-button--active {
   background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
@@ -170,6 +185,11 @@ button,
 
 .button-list input.custom-tip:focus {
   outline: 2px solid var(--strong-cyan);
+}
+
+input[type="radio"]:focus + .tip-button {
+  background-color: var(--strong-cyan);
+  color: var(--very-dark-cyan);
 }
 
 /*number of people*/
@@ -284,12 +304,6 @@ footer {
 
   .button-list input {
     padding: 0.8rem 0.3rem;
-  }
-
-  .label--select {
-    margin: 3.9rem 0 1.5rem;
-
-    margin: 3.9rem 0 1.5rem;
   }
 
   button {

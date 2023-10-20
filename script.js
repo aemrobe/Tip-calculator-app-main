@@ -1,6 +1,9 @@
 // //###### Elements ######
 //input Elements
 const inputs = document.querySelectorAll('input[type="number"]');
+const radioButtons = document.querySelectorAll('input[type = "radio"]');
+
+console.log(radioButtons);
 const inputforthetips = document.querySelector(".input-for-the-tips");
 const inputBill = document.querySelector("#bill");
 const tipButtons = document.querySelectorAll(".tip-button");
@@ -316,6 +319,11 @@ class tip {
     tipButtons.forEach((button) =>
       button.classList.remove("tip-button--active")
     );
+
+    /*removing the checkmark from the radio  buttons*/
+    radioButtons.forEach((button) => {
+      button.checked = false;
+    });
   }
 }
 
